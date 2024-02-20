@@ -1,0 +1,8 @@
+.ppr{
+    margin: 20px 0;
+    width: 100%;
+    display:flex;
+    flex-direction: column;
+    padding:20px;
+    justify-content: space-between;
+}

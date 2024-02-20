@@ -1,0 +1,28 @@
+.cardwrapper{
+    width: 70% ;
+    margin:0 0 0 200px;
+}
+.container{
+    width:60%;
+    margin:auto auto;
+}
+.ppr
+{
+    width: 300px;
+    height: 300px; 
+    padding: 20px;
+}
+
+.filter{
+    position: fixed;
+    left: 100px;
+    top:200px;
+    text-align: center;
+
+}
+
+
+.wrapper{
+    display: flex;
+    justify-content: flex-end;
+}

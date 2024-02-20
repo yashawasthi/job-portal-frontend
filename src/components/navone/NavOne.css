@@ -1,0 +1,20 @@
+.main{
+    display:flex;
+    justify-content: space-between;
+    background-color: black;
+    padding:1rem;
+    color: white;
+    font-size: 2rem;
+    position: sticky ;
+    top:0;
+    z-index: 999;
+}
+.link a{
+    color:white;
+    text-decoration: none;
+}
+
+
+.link-item{
+    margin-left:2rem
+}
