@@ -8,7 +8,7 @@ function Header () {
   return (
     <div className={styles.container}>
       <header>
-        <h1>Dev Quotient</h1>
+        <h1>Jobs Sphere</h1>
       </header>
 
       <div className={styles.resumeHeader}>

@@ -81,7 +81,7 @@ const Footer = () => {
   return (
     <Container>
       <Left>
-        <Logo>Dev Quotient</Logo>
+        <Logo>Jobs Sphere</Logo>
         <Desc>
           There are many variations of passages of Lorem Ipsum available, but
           the majority have suffered alteration in some form, by injected

@@ -7,7 +7,7 @@ const NavTwo = () => {
     <div className='main'>
         <div className='nav-container'>
         <div className='link left'>
-            <Link to="/">DevQuotient</Link>
+            <Link to="/">Jobs Sphere</Link>
         </div>
         <div className='link right'>
             <Link to="/" className='item'>Jobs</Link>

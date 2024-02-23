@@ -5,7 +5,7 @@ const NavOne = () => {
   return (
     <div className='main'>
         <div className='link left'>
-            <Link to="/">DevQuotient</Link>
+            <Link to="/">Jobs Sphere</Link>
         </div>
         <div className='link right'>
             <Link to="/resume-builder" className="link-item">Resume Builder</Link>
