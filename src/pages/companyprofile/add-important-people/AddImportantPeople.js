@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import NavTwo from '../../../components/navtwo/NavTwo';
 import CompanyServices from '../../../services/company.services';
 import "./AddImportantPeople.css"
+import Loader from '../../../components/Loader/Loader';
 const AddImportantPeople = () => {
   const currentUser = useSelector((state) => state.currentUser);
   const userId=currentUser._id
@@ -13,6 +14,8 @@ const AddImportantPeople = () => {
   const [errorName, setErrorName] = useState (false);
   const [errorImgUrl, setErrorImgUrl] = useState (false);
   const navigate = useNavigate ();
+const [isLoading,setIsLoading]=useState([]); 
+
 
   const saveImportantPeople = async e => {
     e.preventDefault ();
@@ -24,10 +27,13 @@ const AddImportantPeople = () => {
     }
     if (name!=="" && imgUrl!=="") {
       try {
+        setIsLoading(true);
         const response = await CompanyServices.setImportantPeople(userId,name,imgUrl);
+        setIsLoading(false);
           navigate ('/companyprofile')
 
       } catch (err) {
+        setIsLoading(false);
         console.log (err);
       }
     }
@@ -36,7 +42,9 @@ const AddImportantPeople = () => {
   return (
 <div>
         <NavTwo />
-       <div className='important-people'>
+        {isLoading==true ? <div className="loaderContainer">
+          <Loader />
+        </div>  :       <div className='important-people'>
         <form onSubmit={saveImportantPeople}>
           <Paper style={{padding: '50px',borderRadius:"20px"}}>
             <div style={{display:"flex",justifyContent:"center"}}>
@@ -73,7 +81,8 @@ const AddImportantPeople = () => {
 
           </Paper>
         </form>
-      </div>
+      </div>}
+
     </div>
   )
 }

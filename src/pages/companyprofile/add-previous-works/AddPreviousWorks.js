@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import NavTwo from '../../../components/navtwo/NavTwo';
 import CompanyServices from '../../../services/company.services';
 import "./AddPreviousWorks.css"
+import Loader from '../../../components/Loader/Loader';
 
 const AddPreviousWorks = () => {
   const currentUser = useSelector((state) => state.currentUser);
@@ -18,6 +19,8 @@ const AddPreviousWorks = () => {
   const [errorEndingYear, setErrorEndingYear] = useState (false);
   const [errorDescription, setErrorDescription] = useState (false);
   const navigate = useNavigate ();
+const [isLoading,setIsLoading]=useState([]); 
+
 
   const savePreviousWork = async e => {
     e.preventDefault ();
@@ -35,9 +38,12 @@ const AddPreviousWorks = () => {
     }
     if (title && description && startingYear && endingYear) {
       try {
+        setIsLoading(true);
         const response = await CompanyServices.addPreviousWork(userId,title,description,startingYear,endingYear);
+        setIsLoading(false);
           navigate ('/companyprofile')
       } catch (err) {
+        setIsLoading(false);
         console.log (err);
       }
     }
@@ -46,7 +52,10 @@ const AddPreviousWorks = () => {
   return (
 <div>
         <NavTwo />
-       <div className='previous-works'>
+        {isLoading==true ? <div className="loaderContainer">
+          <Loader />
+        </div> 
+        :        <div className='previous-works'>
         <form onSubmit={savePreviousWork}>
           <Paper style={{padding: '50px',borderRadius:"20px"}}>
             <div style={{display:"flex",justifyContent:"center"}}>
@@ -101,7 +110,8 @@ const AddPreviousWorks = () => {
 
           </Paper>
         </form>
-      </div>
+      </div>}
+
     </div>
   )
 }

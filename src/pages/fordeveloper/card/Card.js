@@ -55,9 +55,7 @@ font-size:20px;
 `
 const Card = ({jobs,loading}) => {
     const navigate=useNavigate();
-    if (loading) {
-        return <h2>Loading...</h2>;
-      }
+
     
   return (
           <div>

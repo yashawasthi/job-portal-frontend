@@ -5,3 +5,9 @@
     gap:20px;
     justify-content:flex-start;
 }
+.loaderContainer
+{
+    position: fixed;
+    left:50%;
+    top: 50%;
+}

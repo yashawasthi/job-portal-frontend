@@ -27,3 +27,9 @@
     display: flex;
     justify-content: flex-end;
 }
+.loaderContainer
+{
+    position: fixed;
+    left:50%;
+    top: 50%;
+}

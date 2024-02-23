@@ -1,0 +1,17 @@
+.loaderContainer{
+    position: fixed;
+    left:50%;
+    top: 50%;
+}
+.developer-profile-container{
+}
+
+.title-value{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.edit-delete-button-container{
+    display: flex;
+    justify-content: space-evenly;
+}

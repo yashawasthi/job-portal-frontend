@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import DeveloperServices from '../../../services/developer.services';
 import CloseIcon from '@mui/icons-material/Close';
+import Loader from '../../../components/Loader/Loader';
 const Container=styled.div`
 display:flex;
 align-items:center;
@@ -79,18 +80,23 @@ font-size:20px;
 const CardExpanded = () => {
     const navigate=useNavigate()
     const currentUser = useSelector((state) => state.currentUser);
+    const [isLoading,setIsLoading] =useState(false); 
     const userId=currentUser._id
     const [job,setJob]=useState([]);
     const {id}=useParams();
+
     async function getJob() {
   
       try {
+        setIsLoading(true);
         const response = await DeveloperServices.getJob(id);
         if (response.data) {
+          setIsLoading(false);
             setJob(response.data)
         }
         else
         {
+          setIsLoading(false);
           alert("Error")
         }
       } catch (err) {
@@ -104,22 +110,30 @@ const CardExpanded = () => {
     async function apply() {
 
         try {
+          setIsLoading(true);
           const response = await DeveloperServices.applyJob(userId,id);
           if (response.data=== 'ok') {
+            setIsLoading(false);
            navigate("/")
           }
           else
           {
             alert(response.data.error)
+            setIsLoading(false);
           }
         } catch (err) {
           console.log (err);
+          setIsLoading(false);
         }
     
     
     }
   return (
-      <Container>
+    <>
+    {isLoading == true ? <div className={classes.loaderContainer}>
+        <Loader />
+      </div> : 
+          <Container>
           <Paper className={classes.ppr}>
             <FirstBlock>
               <Heading>
@@ -165,8 +179,8 @@ const CardExpanded = () => {
 
             </FifthBlock>
         </Paper>
-      </Container>
-    
+      </Container>}
+    </>
   )
 }
 

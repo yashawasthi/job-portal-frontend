@@ -147,10 +147,25 @@ return axios
   });
 };
 
+const setAbout= async (about,userId) => {
+  return axios
+    .post(BACKEND__URI + 'setAboutCompany', {
+      about,
+      userId
+    },
+    {
+      headers: authHeader (),
+    }
+    )
+    .then (response => {
+      console.log (response);
+      return response;
+    });
+};
 
 
 const CompanyServices = {
-  postJob,getAllJobs,getJob,getCompany,setImportantPeople,addPreviousWork,deleteImportantPeople,deletePreviousWork
+  postJob,getAllJobs,getJob,getCompany,setImportantPeople,addPreviousWork,deleteImportantPeople,deletePreviousWork,setAbout
 };
 
 export default CompanyServices;

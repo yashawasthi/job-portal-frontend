@@ -8,6 +8,7 @@ import DeveloperServices from '../../../services/developer.services';
 import classes from "./AllJobs.module.css"
 import Card from '../card/Card';
 import Pagination from '../../../components/Pagination';
+import Loader from '../../../components/Loader/Loader';
 const label = {inputProps: {'aria-label': 'Checkbox demo'}};
 
 
@@ -20,7 +21,7 @@ const label = {inputProps: {'aria-label': 'Checkbox demo'}};
 
 const AllJobs = () => {
     const [jobs,setJobs]=useState([]);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [jobsPerPage] = useState(2);
 
@@ -29,13 +30,15 @@ const AllJobs = () => {
     async function getAllJobs() {
   
       try {
-        setLoading(true);
+         setIsLoading(true);
         const response = await DeveloperServices.getAllJobs();
           console.log(response.data)
           setJobs(response.data)
-          setLoading(false);
+          setIsLoading(false);
       } catch (err) {
         console.log (err);
+        setIsLoading(false);
+
       }
     }
 
@@ -55,7 +58,9 @@ const AllJobs = () => {
   return (
 <div>
       <NavThree />
-
+      {isLoading==true ? <div className={classes.loaderContainer}>
+        <Loader />
+      </div>  : <div>
       <div className={classes.container}>
           <div className={classes.filter}>
       <Paper className={classes.ppr}>
@@ -80,7 +85,7 @@ const AllJobs = () => {
       </div>:
       <div>
       
-      <Card jobs={currentJobs} loading={loading}/>
+      <Card jobs={currentJobs} loading={isLoading}/>
 </div>}
     </div>
 
@@ -90,6 +95,7 @@ const AllJobs = () => {
         totalJobs={jobs.length}
         paginate={paginate}
       />
+      </div> }
     </div>
   )
 }
