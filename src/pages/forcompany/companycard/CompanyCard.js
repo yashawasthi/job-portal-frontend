@@ -64,7 +64,7 @@ const CompanyCard = ({jobs,loading}) => {
                   <Paper className={classes.ppr}>
                   <FirstBlock>
                   <JobTitle>{job.title}</JobTitle>
-                  <CompanyName>{job.userId.name}</CompanyName>
+                  {/* <CompanyName>{job.userId.name}</CompanyName> */}
                   </FirstBlock>
                   <SecondBlock>
                       <LocationOnIcon />
