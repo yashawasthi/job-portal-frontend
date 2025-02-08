@@ -34,6 +34,7 @@ const App = () => {
 			<Routes>
 				<Route path="/" element={currentUser? 
 				<div>
+					<div></div>
 					{currentUser.isDeveloper?<ForDeveloper />:<ForCompany />}
 				</div>
 				:
